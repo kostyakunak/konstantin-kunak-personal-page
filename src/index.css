@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shootingStar1 {
+  0% {
+    transform: translate(-5vw, -5vh) rotate(40deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(110vw, 95vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar2 {
+  0% {
+    transform: translate(-10vw, 5vh) rotate(38deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(50vw, 45vh) rotate(42deg);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(105vw, 85vh) rotate(48deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar3 {
+  0% {
+    transform: translate(0vw, -10vh) rotate(43deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
+    transform: translate(35vw, 28vh) rotate(40deg);
+  }
+  70% {
+    transform: translate(70vw, 62vh) rotate(46deg);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(115vw, 100vh) rotate(44deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar4 {
+  0% {
+    transform: translate(-8vw, 0vh) rotate(39deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  40% {
+    transform: translate(42vw, 36vh) rotate(44deg);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(108vw, 92vh) rotate(47deg);
+    opacity: 0;
+  }
+}
+
+@keyframes shootingStar5 {
+  0% {
+    transform: translate(-3vw, -8vh) rotate(41deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  25% {
+    transform: translate(28vw, 22vh) rotate(39deg);
+  }
+  60% {
+    transform: translate(63vw, 55vh) rotate(45deg);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(112vw, 98vh) rotate(43deg);
+    opacity: 0;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
