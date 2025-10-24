@@ -21,6 +21,11 @@ export default function Hobbies({ onStateChange }: HobbiesProps) {
 
   const fetchHobbies = async () => {
     try {
+      // Временно отключаем Supabase для тестирования
+      setHobbies(getSampleHobbies());
+      setLoading(false);
+      return;
+      
       const { data, error } = await supabase
         .from('hobbies')
         .select('*')

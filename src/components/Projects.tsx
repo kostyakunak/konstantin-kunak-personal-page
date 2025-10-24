@@ -21,6 +21,11 @@ export default function Projects({ onStateChange }: ProjectsProps) {
 
   const fetchProjects = async () => {
     try {
+      // Временно отключаем Supabase для тестирования
+      setProjects(getSampleProjects());
+      setLoading(false);
+      return;
+      
       const { data, error } = await supabase
         .from('projects')
         .select('*')

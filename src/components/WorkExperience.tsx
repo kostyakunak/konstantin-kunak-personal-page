@@ -12,6 +12,11 @@ export default function WorkExperience() {
 
   const fetchExperiences = async () => {
     try {
+      // Временно отключаем Supabase для тестирования
+      setExperiences(getSampleExperiences());
+      setLoading(false);
+      return;
+      
       const { data, error } = await supabase
         .from('work_experiences')
         .select('*')
