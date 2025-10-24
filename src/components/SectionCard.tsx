@@ -55,10 +55,7 @@ export default function SectionCard({ title, children, backgroundImage }: Sectio
             </button>
 
             <div className="container mx-auto px-6 py-12">
-              <div className="mb-8 flex items-center gap-4">
-                <div className="text-amber-400">
-                  {icon}
-                </div>
+              <div className="mb-8">
                 <h1 className="text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
                   {title}
                 </h1>
