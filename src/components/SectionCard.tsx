@@ -3,53 +3,42 @@ import { X } from 'lucide-react';
 
 interface SectionCardProps {
   title: string;
-  icon: ReactNode;
   children: ReactNode;
-  gradient: string;
+  backgroundImage?: string;
 }
 
-export default function SectionCard({ title, icon, children, gradient }: SectionCardProps) {
+export default function SectionCard({ title, children, backgroundImage }: SectionCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <>
       <div
         onClick={() => setIsExpanded(true)}
-        className={`
-          relative overflow-hidden rounded-2xl cursor-pointer
-          transition-all duration-500 transform hover:scale-105
-          group h-64
-          ${gradient}
-        `}
+        className="relative overflow-hidden rounded-xl cursor-pointer transition-all duration-500 transform hover:translate-x-2 group h-32"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 to-black/40 group-hover:from-black/10 group-hover:to-black/30 transition-all duration-500" />
+        {backgroundImage && (
+          <div
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+            style={{ backgroundImage: `url(${backgroundImage})` }}
+          />
+        )}
+
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/85 to-slate-900/60 group-hover:from-slate-900/90 group-hover:via-slate-900/70 group-hover:to-slate-900/40 transition-all duration-500" />
 
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          {[...Array(10)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `pulse ${2 + Math.random() * 2}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 2}s`,
-              }}
-            />
-          ))}
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent" />
         </div>
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center p-8 text-white">
-          <div className="transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 mb-4">
-            {icon}
-          </div>
-          <h2 className="text-3xl font-bold text-center transform group-hover:translate-y-2 transition-transform duration-500">
+        <div className="relative z-10 h-full flex items-center px-8">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white transform group-hover:translate-x-4 transition-transform duration-500">
             {title}
           </h2>
-          <div className="mt-4 w-16 h-1 bg-white/50 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+          <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div className="w-8 h-0.5 bg-amber-400"></div>
+          </div>
         </div>
 
-        <div className="absolute inset-0 border-2 border-white/20 rounded-2xl group-hover:border-white/40 transition-colors duration-500" />
+        <div className="absolute left-0 bottom-0 w-1 h-0 bg-gradient-to-t from-amber-400 to-orange-500 group-hover:h-full transition-all duration-500" />
       </div>
 
       {isExpanded && (

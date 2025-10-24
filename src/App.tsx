@@ -3,7 +3,6 @@ import SectionCard from './components/SectionCard';
 import Projects from './components/Projects';
 import WorkExperience from './components/WorkExperience';
 import Hobbies from './components/Hobbies';
-import { Folder, Briefcase, Heart } from 'lucide-react';
 
 function App() {
   return (
@@ -11,7 +10,7 @@ function App() {
       <Hero />
 
       <section className="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-800">
-        <div className="container mx-auto">
+        <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 mb-4">
               Explore My World
@@ -21,27 +20,24 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="space-y-6">
             <SectionCard
               title="My Projects"
-              icon={<Folder className="w-16 h-16" />}
-              gradient="bg-gradient-to-br from-amber-600 to-orange-600"
+              backgroundImage="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1920"
             >
               <Projects />
             </SectionCard>
 
             <SectionCard
               title="Work Experience"
-              icon={<Briefcase className="w-16 h-16" />}
-              gradient="bg-gradient-to-br from-orange-600 to-red-600"
+              backgroundImage="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1920"
             >
               <WorkExperience />
             </SectionCard>
 
             <SectionCard
               title="My Hobbies"
-              icon={<Heart className="w-16 h-16" />}
-              gradient="bg-gradient-to-br from-yellow-600 to-amber-600"
+              backgroundImage="https://images.pexels.com/photos/1415268/pexels-photo-1415268.jpeg?auto=compress&cs=tinysrgb&w=1920"
             >
               <Hobbies />
             </SectionCard>
