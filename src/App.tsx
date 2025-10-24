@@ -19,9 +19,6 @@ function App() {
             <h2 className="text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 mb-4">
               Explore My World
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Click on any section to dive deeper into my professional work, experience, and personal interests.
-            </p>
           </div>
 
           <div className="space-y-6">
@@ -53,12 +50,35 @@ function App() {
 
       <footer className="py-12 bg-slate-950 border-t border-slate-800">
         <div className="container mx-auto px-6 text-center">
-          <p className="text-slate-400">
+          <p className="text-slate-400 mb-6">
             Designed and built by <span className="text-amber-400 font-semibold">Konstantin Kunak</span>
           </p>
-          <p className="text-slate-500 text-sm mt-2">
-            Tech optimist • Socialite • Opportunist
-          </p>
+          <div className="flex justify-center gap-6">
+            <a
+              href="https://www.instagram.com/otes_konstantin/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-amber-400 transition-colors duration-300 hover:scale-110 transform"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.linkedin.com/in/konstantyn-kunak-59a96a348/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-amber-400 transition-colors duration-300 hover:scale-110 transform"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://www.upwork.com/freelancers/~011a68a6f2b0f4ccb2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-amber-400 transition-colors duration-300 hover:scale-110 transform"
+            >
+              Upwork
+            </a>
+          </div>
         </div>
       </footer>
     </div>
