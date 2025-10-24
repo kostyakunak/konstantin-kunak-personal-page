@@ -185,7 +185,7 @@ export default function Hero() {
             <div className="absolute -inset-1 bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
             <div className="relative">
               <img
-                src="/photos/WAN01082.png"
+                src="/WAN01082.png"
                 alt="Konstantin Kunak"
                 className="w-80 h-[32rem] lg:w-96 lg:h-[36rem] rounded-2xl object-cover border-4 border-slate-800 shadow-2xl"
               />
