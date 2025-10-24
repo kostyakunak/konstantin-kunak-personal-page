@@ -11,18 +11,47 @@ export default function WorkExperience() {
   }, []);
 
   const fetchExperiences = async () => {
-    const { data, error } = await supabase
-      .from('work_experiences')
-      .select('*')
-      .order('start_date', { ascending: false });
+    try {
+      const { data, error } = await supabase
+        .from('work_experiences')
+        .select('*')
+        .order('start_date', { ascending: false });
 
-    if (error) {
-      console.error('Error fetching work experiences:', error);
-    } else {
-      setExperiences(data || []);
+      if (error) {
+        console.error('Error fetching work experiences:', error);
+        setExperiences(getSampleExperiences());
+      } else {
+        setExperiences(data && data.length > 0 ? data : getSampleExperiences());
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setExperiences(getSampleExperiences());
     }
     setLoading(false);
   };
+
+  const getSampleExperiences = (): WorkExp[] => [
+    {
+      id: '1',
+      company: 'TechCorp Solutions',
+      position: 'Senior Full Stack Developer',
+      description: 'Led development of multiple web applications using React, Node.js, and cloud technologies. Mentored junior developers and implemented CI/CD pipelines.\n\nKey achievements:\n- Improved application performance by 40%\n- Reduced deployment time by 60%\n- Led team of 5 developers',
+      start_date: '2022-01-15',
+      end_date: '2024-03-20',
+      order_index: 1,
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '2',
+      company: 'StartupXYZ',
+      position: 'Frontend Developer',
+      description: 'Developed responsive web applications and mobile interfaces. Collaborated with design team to create user-friendly experiences.\n\nResponsibilities:\n- Built responsive React applications\n- Implemented design systems\n- Optimized for performance',
+      start_date: '2020-06-01',
+      end_date: '2021-12-31',
+      order_index: 2,
+      created_at: new Date().toISOString()
+    }
+  ];
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);

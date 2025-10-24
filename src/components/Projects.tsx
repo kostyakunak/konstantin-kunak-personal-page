@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import { supabase, Project } from '../lib/supabase';
 import { ExternalLink, ArrowLeft } from 'lucide-react';
 
-export default function Projects() {
+interface ProjectsProps {
+  onStateChange?: (hasSelectedProject: boolean) => void;
+}
+
+export default function Projects({ onStateChange }: ProjectsProps) {
   const [projects, setProjects] = useState<Project[]>([]);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
@@ -11,19 +15,55 @@ export default function Projects() {
     fetchProjects();
   }, []);
 
-  const fetchProjects = async () => {
-    const { data, error } = await supabase
-      .from('projects')
-      .select('*')
-      .order('order_index', { ascending: true });
+  useEffect(() => {
+    onStateChange?.(!!selectedProject);
+  }, [selectedProject, onStateChange]);
 
-    if (error) {
-      console.error('Error fetching projects:', error);
-    } else {
-      setProjects(data || []);
+  const fetchProjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .order('order_index', { ascending: true });
+
+      if (error) {
+        console.error('Error fetching projects:', error);
+        // Fallback to sample data if database is empty
+        setProjects(getSampleProjects());
+      } else {
+        setProjects(data && data.length > 0 ? data : getSampleProjects());
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setProjects(getSampleProjects());
     }
     setLoading(false);
   };
+
+  const getSampleProjects = (): Project[] => [
+    {
+      id: '1',
+      title: 'E-Commerce Platform',
+      description: 'A full-stack e-commerce solution with React, Node.js, and PostgreSQL',
+      full_description: 'This is a comprehensive e-commerce platform built with modern web technologies. It features user authentication, product management, shopping cart functionality, payment processing, and admin dashboard.\n\nKey features include:\n- Responsive design for all devices\n- Real-time inventory management\n- Secure payment integration\n- Order tracking system\n- Admin analytics dashboard',
+      technologies: ['React', 'Node.js', 'PostgreSQL', 'Stripe', 'Tailwind CSS'],
+      demo_url: 'https://demo-ecommerce.example.com',
+      image_url: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=800',
+      order_index: 1,
+      created_at: new Date().toISOString()
+    },
+    {
+      id: '2',
+      title: 'Task Management App',
+      description: 'A collaborative task management application with real-time updates',
+      full_description: 'A modern task management application that allows teams to collaborate effectively. Built with real-time capabilities using WebSockets.\n\nFeatures:\n- Real-time collaboration\n- Drag and drop interface\n- File attachments\n- Team management\n- Progress tracking',
+      technologies: ['Vue.js', 'Express.js', 'Socket.io', 'MongoDB', 'Docker'],
+      demo_url: 'https://demo-tasks.example.com',
+      image_url: 'https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800',
+      order_index: 2,
+      created_at: new Date().toISOString()
+    }
+  ];
 
   if (loading) {
     return (

@@ -3,8 +3,12 @@ import SectionCard from './components/SectionCard';
 import Projects from './components/Projects';
 import WorkExperience from './components/WorkExperience';
 import Hobbies from './components/Hobbies';
+import { useState } from 'react';
 
 function App() {
+  const [hobbiesHasSelected, setHobbiesHasSelected] = useState(false);
+  const [projectsHasSelected, setProjectsHasSelected] = useState(false);
+
   return (
     <div className="min-h-screen bg-slate-900">
       <Hero />
@@ -24,8 +28,9 @@ function App() {
             <SectionCard
               title="My Projects"
               backgroundImage="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1920"
+              hideTitle={projectsHasSelected}
             >
-              <Projects />
+              <Projects onStateChange={setProjectsHasSelected} />
             </SectionCard>
 
             <SectionCard
@@ -38,8 +43,9 @@ function App() {
             <SectionCard
               title="My Hobbies"
               backgroundImage="https://images.pexels.com/photos/1415268/pexels-photo-1415268.jpeg?auto=compress&cs=tinysrgb&w=1920"
+              hideTitle={hobbiesHasSelected}
             >
-              <Hobbies />
+              <Hobbies onStateChange={setHobbiesHasSelected} />
             </SectionCard>
           </div>
         </div>

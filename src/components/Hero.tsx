@@ -133,8 +133,7 @@ export default function Hero() {
           </p>
 
           <div className="space-y-6 max-w-2xl mx-auto lg:mx-0">
-            <h2 className="text-2xl font-semibold text-amber-400 flex items-center gap-3 justify-center lg:justify-start">
-              <Sparkles className="w-6 h-6" />
+            <h2 className="text-2xl font-semibold text-slate-300 justify-center lg:justify-start">
               From a Bird's Eye View
             </h2>
 
@@ -188,7 +187,7 @@ export default function Hero() {
               <img
                 src="/photos/WAN01082.png"
                 alt="Konstantin Kunak"
-                className="w-72 h-96 lg:w-80 lg:h-[28rem] rounded-2xl object-cover border-4 border-slate-800 shadow-2xl"
+                className="w-80 h-[32rem] lg:w-96 lg:h-[36rem] rounded-2xl object-cover border-4 border-slate-800 shadow-2xl"
               />
             </div>
           </div>
